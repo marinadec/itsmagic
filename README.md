@@ -8,6 +8,8 @@ The first one contains data preprocessing, the second one contains the models I 
 
 Running the code can be done simply by running the whole notebook. All the models, data preprocessing and the outputs are listed with all the comments as we go step by step in each notebook. Data notebook generates some tables which are used for training in the train notebook. No other specific remarks required.
 
+I additionally train MLP model on Keras and Sequence RNN model on Tensorflow.
+
 ### ML algorithms used
 - Logistic Regression
 - Random Forest
@@ -77,6 +79,14 @@ There is no need to precisely look through the commiting history to find which m
 Data is split to train and validation sets. 
 
 Two baselines are computed: zero output and random output.
+
+The models are compared with the baselines and with each other by metrics such as accuracy, AUC, APS, precision, recall, f1 score. I also check the final output probabilities distribution. For every model I vary it's parameters e.g. learning rate, tree depth, number of neural net layers, hidden vector size, threshold for probabilities to be picked etc.
+
+See the notebook training.ipynb for the metrics and outputs, supported with the comments as we go.
+
+So far I would say that the best models are XGBoost, Ensemble and MLP. Some of the metrics are the best for one of them. Sequence RNN model is a bit useless (is it?) as the majority of people has one order only.
+
+For RNN model I picked 2 layers with LSTM cell. For a single client a sequence is his orders in time, so recurrent network accumulates client's orders one by one and the last output is kept, then passed to a dense layer with sigmoid.
 
 
 
